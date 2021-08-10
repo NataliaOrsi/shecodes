@@ -2,10 +2,19 @@ body {
   font-family: 'Times New Roman', Times, serif;
 }
 
-.weather-app {
-  padding: 20px;
-  border: 1px solid #dadde1;
-  border-radius: 5px;
+
+ul {
+  list-style: none;
+  font-size: 24px;
+  color: #a6acec;
+  display: inline-block;
+  text-align: left;
+  position: relative;
+  top: 40px;
+  left: 30px;
+}
+li:first-letter {
+  text-transform: capitalize;
 }
 
 .page {
@@ -13,13 +22,50 @@ body {
   margin: 60px auto;
 }
 
+.weather-app {
+  padding: 20px;
+  border: 1px solid #dadde1;
+  border-radius: 5px;
+  background: linear-gradient(109.6deg, rgb(255, 221, 225) 11.2%, rgb(255, 255, 255) 92.2%);
+}
+
 .forecast-today {
   margin-top: 40px;
 }
 .forecast-today h1 {
-    font-size: 55px;
     font-family: 'Bree Serif', serif;
-    margin: 10px;
+    font-size: 50px;
+    margin: 10px 10px 0;
     line-height: 48px;
-    color: #448ef6;
+    color: #a56cc1; 
+}
+
+.mainTemperature {
+  font-family: 'Bree Serif', serif;
+  font-size: 70px;
+  margin: 10px;
+  color: #a56cc1; 
+}
+
+.temperatureUnits {
+  font-family: 'Bree Serif', serif;
+  font-size: 20px;
+  color: #a6acec;
+  position: relative;
+  top: -33px;
+  left: -10px;
+}
+
+.mainDate {
+  margin: 0 10px;
+  font-size: 18px;
+  color: #a6acec;
+}
+
+.main-weather-icon {
+  position: relative;
+  top: -120px;
+  left: 110px;
+  width: 150px;
+  height: 150px;
 }
