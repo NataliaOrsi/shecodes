@@ -1,7 +1,11 @@
 body {
-  font-family: 'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
+  background: linear-gradient(
+    90deg,
+    rgb(252, 246, 255) 0%,
+    rgb(240, 237, 250) 100%
+  );
 }
-
 
 ul {
   list-style: none;
@@ -26,29 +30,33 @@ li:first-letter {
   padding: 20px;
   border: 1px solid #dadde1;
   border-radius: 5px;
-  background: linear-gradient(109.6deg, rgb(255, 221, 225) 11.2%, rgb(255, 255, 255) 92.2%);
+  background: linear-gradient(
+    109.6deg,
+    rgb(255, 221, 225) 11.2%,
+    rgb(255, 255, 255) 92.2%
+  );
 }
 
 .forecast-today {
   margin-top: 40px;
 }
 .forecast-today h1 {
-    font-family: 'Bree Serif', serif;
-    font-size: 50px;
-    margin: 10px 10px 0;
-    line-height: 48px;
-    color: #a56cc1; 
+  font-family: "Bree Serif", serif;
+  font-size: 50px;
+  margin: 10px 10px 0;
+  line-height: 48px;
+  color: #a56cc1;
 }
 
 .mainTemperature {
-  font-family: 'Bree Serif', serif;
+  font-family: "Bree Serif", serif;
   font-size: 70px;
   margin: 10px;
-  color: #a56cc1; 
+  color: #a56cc1;
 }
 
 .temperatureUnits {
-  font-family: 'Bree Serif', serif;
+  font-family: "Bree Serif", serif;
   font-size: 20px;
   color: #a6acec;
   position: relative;
@@ -68,4 +76,22 @@ li:first-letter {
   left: 110px;
   width: 150px;
   height: 150px;
+}
+
+.forecast-today {
+  position: relative;
+  top: 70px;
+}
+
+.weekDay {
+  text-align: center;
+  font-family: "Bree Serif", serif;
+  font-size: 24px;
+  color: #a56cc1;
+}
+
+.weekDate {
+  text-align: center;
+  font-size: 16px;
+  color: #a6acec;
 }
