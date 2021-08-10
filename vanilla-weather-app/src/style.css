@@ -1,12 +1,25 @@
 body {
-    font-family: font-family: 'Bree Serif', serif;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .weather-app {
-    max-width: 1140px;
-    margin: 30px auto;
-    padding: 20px;
-    border: 1px solid #dadde1;
-    border-radius: 5px;
+  padding: 20px;
+  border: 1px solid #dadde1;
+  border-radius: 5px;
 }
 
+.page {
+  max-width: 800px;
+  margin: 60px auto;
+}
+
+.forecast-today {
+  margin-top: 40px;
+}
+.forecast-today h1 {
+    font-size: 55px;
+    font-family: 'Bree Serif', serif;
+    margin: 10px;
+    line-height: 48px;
+    color: #448ef6;
+}
