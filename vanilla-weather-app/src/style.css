@@ -37,6 +37,18 @@ li:first-letter {
   );
 }
 
+.search-form .search-button {
+  background: #a56cc1;
+  border-color: #a56cc1;
+}
+
+.search-form .search-button:hover {
+  cursor: pointer;
+  background: white;
+  color: #a56cc1;
+  border-color: #a56cc1;
+}
+
 .forecast-today {
   margin-top: 40px;
 }
@@ -93,5 +105,24 @@ li:first-letter {
 .weekDate {
   text-align: center;
   font-size: 16px;
+  color: #a6acec;
+}
+
+.weather-icons {
+  position: relative;
+  left: 35px;
+  font-size: 40px;
+  padding: 30px 0;
+}
+
+.week-temperatures {
+  text-align: center;
+}
+
+.max-temperature {
+  color: #a56cc1;
+}
+
+.min-temperature {
   color: #a6acec;
 }
