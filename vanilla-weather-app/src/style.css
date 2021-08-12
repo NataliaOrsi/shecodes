@@ -67,13 +67,22 @@ li:first-letter {
   color: #a56cc1;
 }
 
-.temperatureUnits {
+.temperature-units {
   font-family: "Bree Serif", serif;
   font-size: 20px;
   color: #a6acec;
   position: relative;
   top: -33px;
   left: -10px;
+}
+
+.temperature-units .active {
+  color: #a56cc1;
+  cursor: default;
+}
+
+.temperature-units .active:hover {
+  text-decoration: none;
 }
 
 .mainDate {
@@ -85,7 +94,7 @@ li:first-letter {
 .main-weather-icon {
   position: relative;
   top: -120px;
-  left: 110px;
+  left: 130px;
   width: 150px;
   height: 150px;
 }
