@@ -60,7 +60,7 @@ li:first-letter {
   color: #a56cc1;
 }
 
-.mainTemperature {
+.main-temperature {
   font-family: "Bree Serif", serif;
   font-size: 70px;
   margin: 10px;
@@ -85,7 +85,7 @@ li:first-letter {
   text-decoration: none;
 }
 
-.mainDate {
+.main-date {
   margin: 0 10px;
   font-size: 18px;
   color: #a6acec;
@@ -104,14 +104,14 @@ li:first-letter {
   top: 70px;
 }
 
-/* .weekDay {
+.forcast-week-day {
   text-align: center;
   font-family: "Bree Serif", serif;
   font-size: 24px;
   color: #a56cc1;
 }
 
-.weekDate {
+.forecast-week-date {
   text-align: center;
   font-size: 16px;
   color: #a6acec;
@@ -124,15 +124,15 @@ li:first-letter {
   padding: 30px 0;
 }
 
-.week-temperatures {
+.forecast-week-temperatures {
   text-align: center;
 }
 
-.max-temperature {
+.week-max-temperature {
   color: #a56cc1;
 }
 
-.min-temperature {
+.week-min-temperature {
   color: #a6acec;
-} */
+}
 
