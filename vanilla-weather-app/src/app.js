@@ -37,35 +37,76 @@ function formatDay(timestamp) {
   return days[day];
 }
 
-function displayForecast (response) {
-   let forecast = response.data.daily;
-   
-   let forecastElement = document.querySelector("#forecast");
+function formatDayOfTheMonth(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let month = date.getMonth();
+  let months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  let day = date.getDate();
+  let lastDigit = day % 10;
+  let suffix = null;
+  if (lastDigit === 1) {
+    suffix = `st`;
+  } else if (lastDigit === 2) {
+    suffix = `nd`;
+  } else if (lastDigit === 3) {
+    suffix = "rd";
+  } else {
+    suffix = `st`;
+  }
 
-   let forecastHTML = `<div class="row">`;
-  
-   forecast.forEach(function(forecastDay, index) {
-      if (index <5) {
-        forecastHTML =
-          forecastHTML +
-          `
+  return `${months[month]}, ${day}${suffix}`;
+}
+
+function displayForecast(response) {
+  let forecast = response.data.daily;
+
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        `
             <div class="col">
               <div class="forcast-week-day">${formatDay(forecastDay.dt)}</div>
-              <div class="forecast-week-date">August 10th</div>
+              <div class="forecast-week-date">${formatDayOfTheMonth(
+                forecastDay.dt
+              )}</div>
               <img 
-                src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png"
+                src="http://openweathermap.org/img/wn/${
+                  forecastDay.weather[0].icon
+                }@2x.png"
                 alt=""
                 width="60"
                 class="weather-icons"
               />
               <div class="forecast-week-temperatures">
-                <span class="week-max-temperature">${Math.round(forecastDay.temp.max)}° </span>
-                <span class="week-min-temperature">${Math.round(forecastDay.temp.max)}° </span>
+                <span class="week-max-temperature" id="max-temperature">${Math.round(
+                  forecastDay.temp.max
+                )}° </span>
+                <span class="week-min-temperature" id="min-temperature">${Math.round(
+                  forecastDay.temp.max
+                )}° </span>
               </div>
             </div>
           `;
-     }
-   })
+    }
+  });
   forecast = forecastHTML + `<div>`;
   forecastElement.innerHTML = forecastHTML;
 }
@@ -73,7 +114,8 @@ function displayForecast (response) {
 function getForecast(coordinates) {
   console.log(coordinates);
   let apiKey = "3b2c6af1778711e6c3af06800ecbd9b8";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  let unit = "metric";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=${unit}`;
   console.log(apiUrl);
   axios.get(apiUrl).then(displayForecast);
 }
@@ -122,7 +164,6 @@ function displayFahrenheitTemperature(event) {
   fahrenheitLink.classList.add("active");
   let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
-  console.log(fahrenheitTemperature);
 }
 
 function displayCelsiusTemperature(event) {
