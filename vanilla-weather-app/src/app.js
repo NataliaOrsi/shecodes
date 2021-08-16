@@ -100,7 +100,7 @@ function displayForecast(response) {
                   forecastDay.temp.max
                 )}° </span>
                 <span class="week-min-temperature" id="min-temperature">${Math.round(
-                  forecastDay.temp.max
+                  forecastDay.temp.min
                 )}° </span>
               </div>
             </div>
