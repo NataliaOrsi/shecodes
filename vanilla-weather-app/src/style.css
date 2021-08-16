@@ -129,9 +129,11 @@ li:first-letter {
 
 .week-max-temperature {
   color: #a56cc1;
+  padding: 0 0 0 10px;
 }
 
 .week-min-temperature {
   color: #a6acec;
+  padding: 10px;
 }
 

@@ -21,31 +21,50 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
+  return days[day];
+}
+
 function displayForecast (response) {
+   let forecast = response.data.daily;
+   
    let forecastElement = document.querySelector("#forecast");
 
    let forecastHTML = `<div class="row">`;
-   let days = ["Friday", "Saturday", "Sunday", "Monday", "Tuesday"];
-   days.forEach(function(day) {
-      forecastHTML =
-        forecastHTML +
-        `
-          <div class="col">
-            <div class="forcast-week-day">${day}</div>
-            <div class="forecast-week-date">August 10th</div>
-            <img 
-              src="http://openweathermap.org/img/wn/50d@2x.png"
-              alt=""
-              width="60"
-              class="weather-icons"
-            />
-            <div class="forecast-week-temperatures">
-              <span class="week-max-temperature">27°</span>
-              <span class="week-min-temperature">21°</span>
+  
+   forecast.forEach(function(forecastDay, index) {
+      if (index <5) {
+        forecastHTML =
+          forecastHTML +
+          `
+            <div class="col">
+              <div class="forcast-week-day">${formatDay(forecastDay.dt)}</div>
+              <div class="forecast-week-date">August 10th</div>
+              <img 
+                src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png"
+                alt=""
+                width="60"
+                class="weather-icons"
+              />
+              <div class="forecast-week-temperatures">
+                <span class="week-max-temperature">${Math.round(forecastDay.temp.max)}° </span>
+                <span class="week-min-temperature">${Math.round(forecastDay.temp.max)}° </span>
+              </div>
             </div>
-          </div>
-        `;
-
+          `;
+     }
    })
   forecast = forecastHTML + `<div>`;
   forecastElement.innerHTML = forecastHTML;
@@ -54,7 +73,7 @@ function displayForecast (response) {
 function getForecast(coordinates) {
   console.log(coordinates);
   let apiKey = "3b2c6af1778711e6c3af06800ecbd9b8";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   console.log(apiUrl);
   axios.get(apiUrl).then(displayForecast);
 }
