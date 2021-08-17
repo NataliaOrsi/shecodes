@@ -70,7 +70,35 @@ function formatDayOfTheMonth(timestamp) {
   return `${months[month]}, ${day}${suffix}`;
 }
 
+function displayImages(icon) {
+  let url = null;
+  if (icon === "04d" || icon === "04n") {
+    url = `https://s3.amazonaws.com/shecodesio-production/uploads/files/000/015/394/original/broken-clouds-128.png?1629183967`;
+  } else if (icon === "01d" || icon === "01n") {
+    url = `https://s3.amazonaws.com/shecodesio-production/uploads/files/000/015/396/original/clear-sky-128.png?1629184041`;
+  } else if (icon === "02d" || icon === "02n") {
+    url = `https://s3.amazonaws.com/shecodesio-production/uploads/files/000/015/397/original/few-clouds-128.png?1629184904`;
+  } else if (icon === "50d") {
+    url = `https://s3.amazonaws.com/shecodesio-production/uploads/files/000/015/398/original/mist-128.png?1629189082`;
+  } else if (icon === "10d") {
+    url = `https://s3.amazonaws.com/shecodesio-production/uploads/files/000/015/399/original/rain-128.png?1629189140`;
+  } else if (icon === "03d" || icon === "03n") {
+    url = `https://s3.amazonaws.com/shecodesio-production/uploads/files/000/015/400/original/scattered-clouds-128.png?1629189571`;
+  } else if (icon === "09d") {
+    url = `https://s3.amazonaws.com/shecodesio-production/uploads/files/000/015/401/original/shower-rain-128.png?1629189616`;
+  } else if (icon === "13d") {
+    url = `https://s3.amazonaws.com/shecodesio-production/uploads/files/000/015/402/original/snow-128.png?1629189672`;
+  } else if (icon === "11d") {
+    url = `https://s3.amazonaws.com/shecodesio-production/uploads/files/000/015/403/original/thunderstorm-128.png?1629189797`;
+  } else {
+    url = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+  }
+
+  return url;
+}
+
 function displayForecast(response) {
+  console.log(response);
   let forecast = response.data.daily;
 
   let forecastElement = document.querySelector("#forecast");
@@ -88,9 +116,7 @@ function displayForecast(response) {
                 forecastDay.dt
               )}</div>
               <img 
-                src="http://openweathermap.org/img/wn/${
-                  forecastDay.weather[0].icon
-                }@2x.png"
+                src=${displayImages(forecastDay.weather[0].icon)}
                 alt=""
                 width="60"
                 class="weather-icons"
@@ -138,7 +164,7 @@ function displayTemperature(response) {
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
   iconElement.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    `${displayImages(response.data.weather[0].icon)}`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
 
